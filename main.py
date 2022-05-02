@@ -10,10 +10,11 @@ from SecurityEventModel import SecurityEventModel
 from Server import Server
 
 PORT = 1235
-CONNECTION_STRING = "sqlite:///test.db"
+CONNECTION_STRING = "sqlite:///test.db"  #TODO: Přejmenovat na něco normálního
 DATABASE = Database(CONNECTION_STRING)
 
 
+# TODO: Smazat
 def time_warp(hours):
     events: List[SecurityEventModel] = DATABASE.session.query(SecurityEventModel).all()
     for event in events:
