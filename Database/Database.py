@@ -4,11 +4,11 @@ import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from EntityIdentificationType import EntityIdentificationType
-from EntityModel import EntityModel
-from SecurityEventModel import SecurityEventModel
+from Database.Enum.EntityIdentificationType import EntityIdentificationType
+from Database.Models.EntityModel import EntityModel
+from Database.Models.SecurityEventModel import SecurityEventModel
+from Database.DeclarativeBase import BASE
 from Communication.Model.Packet import Packet
-from DeclarativeBase import BASE
 from Evaluation import Classifier
 from Exceptions.UnknownFormatException import UnknownFormatException
 from Exceptions.UnsharableTypeException import UnsharableTypeException

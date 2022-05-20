@@ -2,11 +2,11 @@ import datetime
 from argparse import ArgumentParser
 from typing import List
 
-from Database import Database
+from Database.Database import Database
 from Plotting import Plotter
 from Publisher import Publisher
 from Reevalution import Reevaluator
-from SecurityEventModel import SecurityEventModel
+from Database.Models.SecurityEventModel import SecurityEventModel
 from Server import Server
 
 PORT = 1235

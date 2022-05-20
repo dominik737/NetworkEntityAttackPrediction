@@ -3,8 +3,8 @@ import math
 
 from typing import List
 
-from EntityModel import EntityModel
-from SecurityEventModel import SecurityEventModel
+from Database.Models.EntityModel import EntityModel
+from Database.Models.SecurityEventModel import SecurityEventModel
 
 
 def calculate_entity_fmp(entity: EntityModel, args) -> float:

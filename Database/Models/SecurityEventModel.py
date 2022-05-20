@@ -3,7 +3,7 @@ from sqlalchemy.orm import relationship
 
 from Communication.Model.SecurityEvent import SecurityEvent
 from Evaluation import Normalizator
-from DeclarativeBase import BASE
+from Database.DeclarativeBase import BASE
 
 
 class SecurityEventModel(BASE):

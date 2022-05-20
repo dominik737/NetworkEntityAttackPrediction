@@ -1,10 +1,7 @@
-from typing import List
-
 from sqlalchemy import Column, Integer, String, DateTime, Float
 from sqlalchemy.orm import relationship
 
-from DeclarativeBase import BASE
-from SecurityEventModel import SecurityEventModel
+from Database.DeclarativeBase import BASE
 
 
 class EntityModel(BASE):
@@ -16,5 +13,5 @@ class EntityModel(BASE):
     FMP_score = Column(Float)
     last_attack_date_time = Column(DateTime)
     last_updated_date_time = Column(DateTime)
-    security_events: List[SecurityEventModel] = relationship("SecurityEventModel", back_populates="entity")
+    security_events = relationship("SecurityEventModel", back_populates="entity")
 

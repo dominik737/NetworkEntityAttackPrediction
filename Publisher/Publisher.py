@@ -1,7 +1,7 @@
 from typing import List
 
-from Database import Database
-from EntityModel import EntityModel
+from Database.Database import Database
+from Database.Models.EntityModel import EntityModel
 
 
 def publish(db: Database, args):

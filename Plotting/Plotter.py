@@ -2,8 +2,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 from sqlalchemy import select
 
-from Database import Database
-from EntityModel import EntityModel
+from Database.Database import Database
+from Database.Models.EntityModel import EntityModel
 
 
 def plot(db: Database):

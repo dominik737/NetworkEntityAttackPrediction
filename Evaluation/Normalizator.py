@@ -1,5 +1,5 @@
-from SecurityEventSubType import SecurityEventSubType
-from SecurityEventType import SecurityEventType
+from Database.Enum.SecurityEventSubType import SecurityEventSubType
+from Database.Enum.SecurityEventType import SecurityEventType
 from Configuration.Helpers import MaxParameterReader
 from Communication.Helpers import DetailParameterRetriever
 from Exceptions.UnsharableTypeException import UnsharableTypeException
