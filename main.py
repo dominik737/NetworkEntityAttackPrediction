@@ -10,7 +10,7 @@ from Database.Models.SecurityEventModel import SecurityEventModel
 from Server import Server
 
 PORT = 1235
-CONNECTION_STRING = "sqlite:///test.db" # TODO: změnit na reputation.db
+CONNECTION_STRING = "sqlite:///reputation.db"
 DATABASE = Database(CONNECTION_STRING)
 
 if __name__ == '__main__':
