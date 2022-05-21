@@ -13,15 +13,6 @@ PORT = 1235
 CONNECTION_STRING = "sqlite:///test.db" # TODO: změnit na reputation.db
 DATABASE = Database(CONNECTION_STRING)
 
-
-# TODO: Smazat
-def time_warp(hrs):
-    events: List[SecurityEventModel] = DATABASE.session.query(SecurityEventModel).all()
-    for event in events:
-        event.detection_date_time = event.detection_date_time - datetime.timedelta(hours=hrs)
-    DATABASE.session.commit()
-
-
 if __name__ == '__main__':
     arg_parser = ArgumentParser()
     arg_parser.add_argument("-s", "--short-window", type=int, required=False, default=24,

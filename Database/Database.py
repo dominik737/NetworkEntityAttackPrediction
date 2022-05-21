@@ -23,11 +23,6 @@ class Database:
         BASE.metadata.create_all(self.engine)
         session_factory = sessionmaker(bind=self.engine)
         self.session = session_factory()
-        self.unsharable = []
-        self.unsupported = []
-        self.key_error = []
-        self.missing_config = []
-        self.duplicit_config = []
 
     def store_alert(self, packet: Packet, args):
         for security_event in packet.securityEvents:
@@ -38,26 +33,21 @@ class Database:
                 sys.stderr.write("Entity type or sub type missing for security event")
                 sys.stderr.write("attackerIP: " + security_event.attackerIP + " detail: " + security_event.detail + "subtype: " + security_event.subType)
                 sys.stderr.write(str(error))
-                self.key_error.append(security_event)  # TODO: Smazat po testování
                 continue
             except UnknownFormatException as error:
                 sys.stderr.write("Security event")
                 sys.stderr.write(str(error))
                 sys.stderr.write("attackerIP: " + security_event.attackerIP + " detail: " + security_event.detail)
-                self.unsupported.append(security_event)  # TODO: Smazat po testování
                 continue
             except UnsharableTypeException as error:
                 sys.stderr.write("Type is not set to be shared")
                 sys.stderr.write(str(error))
-                self.unsharable.append(security_event)  # TODO: Smazat po testování
                 continue
             except MissingConfigEntry as error:
                 sys.stderr.write(str(error))
-                self.missing_config.append(security_event)  # TODO: Smazat po testování
                 continue
             except DuplicitConfigEntry as error:
                 sys.stderr.write(str(error))
-                self.duplicit_config.append(security_event)  # TODO: Smazat po testování
                 continue
             entity.security_events.append(security_event_model)
             entity.FMP_score = Classifier.calculate_entity_fmp(entity, args)

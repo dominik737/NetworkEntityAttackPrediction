@@ -28,9 +28,6 @@ def get_security_event_volume(detail: str, event_type: int, sub_type: int) -> fl
     except ValueError as e:
         volume = 0
         sys.stderr.write(f"Parsing of event volume failed. Event volume set to 0.Event type: {event_type}, event sub type: {sub_type}, detail: {detail}. Exception: {e} \n")
-        f = open("wrongpasing.txt", "a")
-        f.write(f"Parsing of event volume failed. Event volume set to 0.Event type: {event_type}, event sub type: {sub_type}, detail: {detail}. Exception: {e}")  # TODO: Smazat !
-        f.close()
     return get_volume(volume, max_volume)
 
 
