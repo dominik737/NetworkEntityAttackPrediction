@@ -48,11 +48,12 @@ if __name__ == '__main__':
         server.start(PORT)
     """
 
+    time_warp(-0.5)
     hours = np.arange(0,24,0.5).tolist() + np.arange(24,176,8).tolist()
     for hour in hours:
-        print(f"Plotting hour{hour}")
+        print(f"Plotting hour {hour}")
         time_warp(hour)
-        Plotter.plot(DATABASE, hour)
         Reevaluator.run(DATABASE, args)
+        Plotter.plot(DATABASE, hour)
         time_warp(-hour)
     Reevaluator.run(DATABASE, args)
