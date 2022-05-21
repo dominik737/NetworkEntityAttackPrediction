@@ -9,10 +9,8 @@ from Reevalution import Reevaluator
 from Database.Models.SecurityEventModel import SecurityEventModel
 from Server import Server
 
-import numpy as np #TODO: smazat
-
 PORT = 1235
-CONNECTION_STRING = "sqlite:///reputation.db"
+CONNECTION_STRING = "sqlite:///test.db" # TODO: změnit na reputation.db
 DATABASE = Database(CONNECTION_STRING)
 
 
@@ -36,8 +34,7 @@ if __name__ == '__main__':
     arg_parser.add_argument("-u", "--publish", required=False, nargs=3, metavar=("LOW_FMP_THRESHOLD", "MEDIUM_FMP_THRESHOLD", "HIGH_FMP_THRESHOLD"), help="Publish categorized offenders to the files.")
     args = arg_parser.parse_args()
 
-    """
-    if args.reevaluation:
+    if args.reevaluation is not None:
         Reevaluator.run(DATABASE, args)
     elif args.plot:
         Plotter.plot(DATABASE)
@@ -46,14 +43,3 @@ if __name__ == '__main__':
     else:
         server = Server(DATABASE, args)
         server.start(PORT)
-    """
-
-    time_warp(-0.5)
-    hours = np.arange(0,24,0.5).tolist() + np.arange(24,176,8).tolist()
-    for hour in hours:
-        print(f"Plotting hour {hour}")
-        time_warp(hour)
-        Reevaluator.run(DATABASE, args)
-        Plotter.plot(DATABASE, hour)
-        time_warp(-hour)
-    Reevaluator.run(DATABASE, args)

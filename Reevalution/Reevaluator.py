@@ -13,4 +13,8 @@ def run(db: Database, args):
         new_fmp = Classifier.calculate_entity_fmp(entity, args)
         entity.FMP_score = new_fmp
         entity.last_updated_date_time = datetime.datetime.now()
+    delete_harmless_entities(db)
     db.session.commit()
+
+def delete_harmless_entities(db: Database):
+    db.session.query(EntityModel).filter(EntityModel.FMP_score == 0 or EntityModel.FMP_score == None).delete()
